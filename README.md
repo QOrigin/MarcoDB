@@ -1,36 +1,48 @@
-# MarcoDB
-Native fault tolerance (WAL) and corporate Big Data support. Client-Server architecture operating 100% offline.
+# 🗄️ MarcoDB Enterprise
 
-MarcoDB Enterprise
-Official Database Documentation | Version 1.1
-Copyright © 2026 QOrigin Technology Hub
+**Documentação Oficial do Banco de Dados | Versão 1.1**  
+*Copyright © 2026 QOrigin Hub Tecnológica*
 
-MarcoDB Enterprise is the native database engine of the QOrigin ecosystem. Designed for maximum performance and security, it uses a B+ Tree data structure, offering ultra-fast access to structured data and BLOBs through a Client-Server architecture via pure TCP protocol.
+O **MarcoDB Enterprise** é o motor de banco de dados nativo do ecossistema QOrigin. Projetado para máxima performance e segurança, ele utiliza uma estrutura de dados B+ Tree, oferecendo acesso ultrarrápido a dados estruturados e BLOBs através de uma arquitetura Cliente-Servidor via protocolo TCP puro. 
 
-1. Core Architecture and Resilience
-Unlike simple file-based databases, MarcoDB was built with the same systems engineering as enterprise databases like PostgreSQL and Oracle.
+O MarcoDB atua como a espinha dorsal de persistência para os projetos desenvolvidos na **Prism Engine**, suportando perfeitamente os fluxos de trabalho de dados exigidos pelo **Lucida Flow** e gerenciamento de assets do **Paint Gen**.
 
-Industrial Grade Features
-Write-Ahead Logging (WAL): Absolute fault tolerance. Before any byte is changed in memory, the intent is physically saved to disk. In the event of a power outage (Hard Crash), the server perfectly recovers the state upon restart.
-Overflow Pages (Big Data): Breaks the physical 4KB page limit of the B-Tree. Giant texts or JSONs are automatically sliced into linked memory lists (Data Wagons).
-Message Framing (TCP): Uses the <|EOM|> marker to protect the network against packet fragmentation, ensuring transit integrity.
-SHA-256 Authentication: Mandatory security handshake. Passwords never travel in plain text.
-2. MQL Language (Marco Query Language)
-Communication with the server is simple and direct, ideal for microservices and quick integrations.
+---
 
-MQL Command	Expected Syntax	Action Description
-auth	auth <user> <password>	Authenticates the current TCP socket. Required before any other operation.
-set	set <key> <value>	Inserts a new record. Returns an error if the key already exists.
-get	get <key>	Retrieves the stored value (text or JSON).
-update	update <key> <new_val>	Replaces the value of an existing key using a safe rewrite mechanism.
-del	del <key>	Permanently removes the key and frees the pages on the disk.
-import	import <key> <file>	(Driver/CLI Only) Uploads massive files via Overflow Pages.
-3. Drivers and Integration
-MarcoDB was designed to run on any hosting (including VPS) through port 7300.
+## 1. Core Architecture e Resiliência
 
-Python (Official SDK)
-Ideal for integrating with Lucida-Flow Studio or robust back-ends.
+Diferente de bancos de dados simples baseados em arquivos, o MarcoDB foi construído com a mesma engenharia de sistemas corporativos como PostgreSQL e Oracle.
 
+*   **Write-Ahead Logging (WAL):** Tolerância absoluta a falhas. Antes de qualquer byte ser alterado na memória, a intenção é salva fisicamente no disco. Em caso de queda de energia (Hard Crash), o servidor recupera perfeitamente o estado ao reiniciar.
+*   **Overflow Pages (Big Data):** Quebra o limite físico da página de 4KB da B-Tree. Textos gigantes ou JSONs são automaticamente fatiados em listas de memória encadeadas (Data Wagons).
+*   **Message Framing (TCP):** Utiliza o marcador `<|EOM|>` para proteger a rede contra fragmentação de pacotes, garantindo integridade de trânsito em integrações críticas.
+*   **Autenticação SHA-256:** Handshake de segurança obrigatório. Senhas nunca trafegam em texto puro.
+
+---
+
+## 2. MQL Language (Marco Query Language)
+
+A comunicação com o servidor é feita de forma simples e direta, ideal para microserviços e integrações rápidas em engines.
+
+| Comando MQL | Sintaxe Esperada | Descrição da Ação |
+| :--- | :--- | :--- |
+| `auth` | `auth <user> <password>` | Autentica o socket TCP atual. Necessário antes de qualquer outra operação. |
+| `set` | `set <key> <value>` | Insere um novo registro. Retorna erro se a chave já existir. |
+| `get` | `get <key>` | Recupera o valor armazenado (texto ou JSON). |
+| `update` | `update <key> <new_val>` | Substitui o valor de uma chave existente usando mecanismo de reescrita segura. |
+| `del` | `del <key>` | Remove a chave permanentemente e libera as páginas no disco. |
+| `import` | `import <key> <file>` | *(Apenas Driver/CLI)* Faz upload de arquivos massivos via Overflow Pages. |
+
+---
+
+## 3. Drivers e Integração
+
+O MarcoDB foi desenhado para rodar em **qualquer hospedagem** (incluindo VPS) através da porta `7300`.
+
+### Python (SDK Oficial)
+Ideal para acoplar serviços backend, integrar a lógica da Prism Engine ou comunicar-se com o **Lucida Flow**.
+
+```python
 from marcodb_client import MarcoDBClient
 
 # Inicializa o driver com a autenticação já configurada
@@ -41,9 +53,15 @@ if db.connect():
     response = db.execute("get project")
     print("Dados retornados:", response)
     db.close()
-4. Main Example (Web / PHP Integration)
-For web developers, we provide the MarcoDB.php class, which uses fsockopen to bypass provider blocks and connect your site directly to the database.
+```
 
+---
+
+## 4. Exemplo Mestre (Web / Integração PHP)
+
+Para desenvolvedores web ou painéis administrativos remotos, fornecemos a classe `MarcoDB.php`. Ela utiliza `fsockopen` para contornar bloqueios de provedores e conectar seu site diretamente ao banco de dados.
+
+```php
 <?php
 require_once 'MarcoDB.php';
 
@@ -72,4 +90,7 @@ try {
     echo "Erro Crítico de Banco de Dados: " . $e->getMessage();
 }
 ?>
-MarcoDB Enterprise — The heart of the QOrigin infrastructure.
+```
+
+---
+> **MarcoDB Enterprise** — O coração da infraestrutura QOrigin.
