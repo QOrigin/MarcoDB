@@ -1,3 +1,7 @@
+[Volume 1: MarcoDB (O Manual)](https://www.amazon.com.br/dp/B0G1LXL3TX)
+
+[Volume 2: Projetos Práticos com MarcoDB](https://www.amazon.com.br/dp/B0G1RV7Z6F)
+
 # 🗄️ MarcoDB Enterprise
 
 **Official Database Documentation | Version 1.1**  
