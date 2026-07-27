@@ -1,0 +1,37 @@
+# END USER LICENSE AGREEMENT (EULA) - MarcoDB Enterprise
+
+**Last Updated: July 2026**
+
+Welcome to MarcoDB Enterprise. By purchasing, downloading, installing, or connecting to our database engine, you agree to the terms and conditions outlined below. Please read carefully, as this document is a legal agreement between you and QOrigin Technology Hub.
+
+### 1. License Grant
+QOrigin grants you a personal, non-exclusive, non-transferable, and revocable license to install and run the MarcoDB server and use the associated SDKs (Connection Drivers). This license allows the use of the database server in production environments (On-Premise, VPS, or Cloud) contracted by you. 
+
+Furthermore, you are fully authorized to embed and distribute the client connection SDKs (e.g., PHP, Node.js, C#, Go) within standard shared hosting environments (such as HostGator, Hostinger), Content Management Systems (like WordPress), or custom software, to establish communication with your licensed MarcoDB server.
+
+### 2. Data Ownership
+QOrigin fully respects the privacy and ownership of your information. **You are 100% owner of all data transmitted and stored in the database.**
+
+We do not have access, we do not collect usage metrics, and we do not claim any ownership over the `.db` files, transactional logs (`.log`), or data inserted via MQL commands. You are free to monetize the systems, games, and sites that use MarcoDB as infrastructure (Royalty-Free).
+
+### 3. Use Restrictions
+By using MarcoDB Enterprise, you agree that you **MAY NOT**:
+* Sell, rent, sublicense, or redistribute the binary server engine (executable server files) to third parties.
+* As a hosting provider, package and commercialize the MarcoDB Server as a managed database service (DBaaS - Database as a Service) in direct competition with QOrigin, without prior written authorization.
+* Reverse engineer to extract the original source code of the algorithms for the B+ Tree system, Write-Ahead Logging (WAL), or Overflow Pages.
+
+*(Note: The above restrictions apply to the Server Engine. The Client SDKs may be freely integrated into your commercial products as stated in Clause 1).*
+
+### 4. Warranty and Refund
+In accordance with the Consumer Protection Code, we offer an **unconditional 7-day warranty**. If the database engine does not meet your performance or infrastructure needs, you may request a full refund of the amount paid within this period directly through the payment platform.
+
+### 5. Disclaimer of Warranties ("As Is") and Security
+The software is provided "as is". Although MarcoDB has advanced fault tolerance systems, QOrigin cannot guarantee that the software is invulnerable to all physical disk failures or cyber attacks.
+
+QOrigin **is not responsible under any circumstances** for data corruption, loss of critical information, disk failures of your hosting provider, or lost profits. It is the sole and exclusive responsibility of the licensee (you) to maintain a routine of regular backups of the `MarcoDB.db` and `marcodb.log` files, as well as to protect the root user passwords.
+
+### 6. Updates
+The purchased license grants access to security updates and performance fixes for the 1.x version of the engine. Major structural version releases (e.g., MarcoDB 2.0 with native clustering support) may be sold separately at QOrigin's discretion.
+
+---
+*Copyright © 2026 QOrigin Technology Hub. All rights reserved.*
